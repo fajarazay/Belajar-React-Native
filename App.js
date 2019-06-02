@@ -13,24 +13,35 @@ import Home from "./src/pages/Home";
 import SplashScreen from "./src/pages/SplashScreen";
 type Props = {};
 export default class App extends Component<Props> {
-  componentWillMount() {
-    this.state = {
-      view: <SplashScreen />
-    };
+  constructor(props) {
+    super(props);
 
-    setTimeout(() => {
-      //IF FALSE NAVIGATE TO ERROR
-      this.setState({ view: <Home /> });
-    }, 10000); //TIME OF WAITING
+    this.state = { isLoading: true };
   }
 
   render() {
-    return this.state.view;
+    if (this.state.isLoading) {
+      return <SplashScreen />;
+    }
+
+    return <Home />;
+  }
+
+  performTimeConsumingTask = async () => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve("result");
+      }, 5000)
+    );
+  };
+
+  async componentDidMount() {
+    // Preload data from an external API
+    // Preload data using AsyncStorage
+    const data = await this.performTimeConsumingTask();
+
+    if (data !== null) {
+      this.setState({ isLoading: false });
+    }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
