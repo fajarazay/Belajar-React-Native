@@ -1,38 +1,30 @@
 import React, { Component } from "react";
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  TouchableOpacity
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import Logo from "../components/Logo";
 
-import FormLogin from "../components/FormLogin";
+import FormSignup from "../components/FormSignup";
 
 import { Actions } from "react-native-router-flux";
 
-export default class Login extends Component<{}> {
-  signup() {
-    Actions.signup();
+export default class Signup extends Component<{}> {
+  goBack() {
+    Actions.pop();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#263238" barStyle="light-content" />
-
         <Logo />
 
-        <FormLogin type="Masuk" />
+        <FormSignup type="Daftar" />
 
         <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Belum punya akun?</Text>
+          <Text style={styles.signupText}>Sudah punya akun?</Text>
 
-          <TouchableOpacity onPress={this.signup}>
-            <Text style={styles.signupButton}> Daftar</Text>
+          <TouchableOpacity onPress={this.goBack}>
+            <Text style={styles.signupButton}> Masuk</Text>
           </TouchableOpacity>
         </View>
       </View>

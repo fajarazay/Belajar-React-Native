@@ -7,10 +7,10 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, View, StatusBar } from "react-native";
-
+import Routes from "./src/Routes";
 import Login from "./src/pages/Login";
 import SplashScreen from "./src/pages/SplashScreen";
+import { Router } from "react-native-router-flux";
 type Props = {};
 export default class App extends Component<Props> {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class App extends Component<Props> {
       return <SplashScreen />;
     }
 
-    return <Login />;
+    return <Routes />;
   }
 
   performTimeConsumingTask = async () => {
