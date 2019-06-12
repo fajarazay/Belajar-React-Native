@@ -8,10 +8,10 @@ export default class SplashScreen extends React.Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#34495e"
+          backgroundColor: "#37474F"
         }}
       >
-        <StatusBar backgroundColor="#2c3e50" barStyle="light-content" />
+        <StatusBar backgroundColor="#263238" barStyle="light-content" />
         <LogoSpin />
         <ActivityIndicator color={"white"} />
       </View>

@@ -9,7 +9,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 
-import Home from "./src/pages/Home";
+import Login from "./src/pages/Login";
 import SplashScreen from "./src/pages/SplashScreen";
 type Props = {};
 export default class App extends Component<Props> {
@@ -24,7 +24,7 @@ export default class App extends Component<Props> {
       return <SplashScreen />;
     }
 
-    return <Home />;
+    return <Login />;
   }
 
   performTimeConsumingTask = async () => {
