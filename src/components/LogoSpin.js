@@ -9,23 +9,28 @@ import {
   Easing
 } from "react-native";
 
-spinValue = new Animated.Value(0);
-
-// First set up animation
-Animated.timing(this.spinValue, {
-  toValue: 20,
-  duration: 600000,
-  easing: Easing.linear
-}).start();
-
-// Second interpolate beginning and end values (in this case 0 and 1)
-const spin = this.spinValue.interpolate({
-  inputRange: [0, 1],
-  outputRange: ["0deg", "360deg"]
-});
-
 export default class LogoSpin extends Component<{}> {
+  constructor(props) {
+    super(props);
+    this.spinValue = new Animated.Value(0);
+  }
+
+  componentDidMount() {
+    // First set up animation
+    Animated.timing(this.spinValue, {
+      toValue: 35,
+      duration: 60000,
+      easing: Easing.linear
+    }).start();
+  }
+
   render() {
+    // Second interpolate beginning and end values (in this case 0 and 1)
+    const spin = this.spinValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ["0deg", "360deg"]
+    });
+
     return (
       <View style={styles.container}>
         <Animated.Image
