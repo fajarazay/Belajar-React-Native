@@ -9,10 +9,7 @@ const api_key = '7c74275931a77950a117248957624363'
 const page = '1'
 const language = 'en-US'
 export const urlDBMovie = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=${language}&page=${page}`
-// export const StackOverTabs = StackNavigator({
-//   Home: { screen: TabNavigate },
-//   GotoAbout: { screen: About }
-// });
+
 
 export default class Home extends Component<{}> {
   constructor(props) {
