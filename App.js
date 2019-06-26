@@ -23,7 +23,6 @@ export default class App extends Component<Props> {
     if (this.state.isLoading) {
       return <SplashScreen />;
     }
-
     return <Routes />;
   }
 

@@ -5,7 +5,8 @@ import {
   Text,
   View,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  BackHandler
 } from "react-native";
 
 import Logo from "../components/Logo";
@@ -15,6 +16,15 @@ import FormLogin from "../components/FormLogin";
 import { Actions } from "react-native-router-flux";
 
 export default class Login extends Component<{}> {
+  componentDidMount() {
+    this.backButton = BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.exitApp()
+      return true;
+    });
+  }
+  componentWillUnmount() {
+    this.backButton.remove();
+  }
   signup() {
     Actions.signup();
   }

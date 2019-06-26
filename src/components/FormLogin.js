@@ -5,10 +5,34 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  BackHandler,
+  Alert
 } from "react-native";
 
+import { Actions, InteractionManager } from 'react-native-router-flux';
+
 export default class FormLogin extends Component<{}> {
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  handleBackButton = () => {
+    Alert.alert('alert')
+    //add your code
+    BackHandler.exitApp()
+    return true;
+  };
+
+  goHome() {
+    Actions.home({ accessFrom: 'Login' }) // .home berdasarkan key pada Routes.js
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -31,7 +55,7 @@ export default class FormLogin extends Component<{}> {
           ref={input => (this.password = input)}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => { this.goHome() }}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>

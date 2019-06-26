@@ -7,8 +7,13 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
+import {Actions} from 'react-native-router-flux'
 
 export default class FormLogin extends Component<{}> {
+  goHome() {
+    Actions.home({accessFrom: 'Signup'})
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -41,7 +46,7 @@ export default class FormLogin extends Component<{}> {
           ref={input => (this.password = input)}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={this.goHome}>
           <Text style={styles.buttonText}>{this.props.type}</Text>
         </TouchableOpacity>
       </View>
