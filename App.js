@@ -8,7 +8,7 @@
 
 import React, { Component } from "react";
 import { createAppContainer } from 'react-navigation'
-import AppNavigator from './src/'
+import AppNavigator from './src/navigator'
 type Props = {};
 
 const AppContainer = createAppContainer(AppNavigator);
