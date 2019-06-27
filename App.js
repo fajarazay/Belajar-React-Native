@@ -7,40 +7,18 @@
  */
 
 import React, { Component } from "react";
-import Routes from "./src/Routes";
-import Login from "./src/pages/Login";
-import SplashScreen from "./src/pages/SplashScreen";
-import { Router } from "react-native-router-flux";
+import { createAppContainer } from 'react-navigation'
+import AppNavigator from './src/'
 type Props = {};
+
+const AppContainer = createAppContainer(AppNavigator);
+
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
-
-    this.state = { isLoading: true };
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <SplashScreen />;
-    }
-    return <Routes />;
-  }
-
-  performTimeConsumingTask = async () => {
-    return new Promise(resolve =>
-      setTimeout(() => {
-        resolve("result");
-      }, 5000)
-    );
-  };
-
-  async componentDidMount() {
-    // Preload data from an external API
-    // Preload data using AsyncStorage
-    const data = await this.performTimeConsumingTask();
-
-    if (data !== null) {
-      this.setState({ isLoading: false });
-    }
+    return <AppContainer />
   }
 }
